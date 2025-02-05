@@ -6,12 +6,6 @@ databaseChangeLog:
       author: "Mohith"
       comment: "Create the initial database schema structure"
       labels: "schema-setup"
-      metadata:
-        ado-ticket: "#214333"
-        created-date: "2025-02-05"
-        reviewer: "satish"
-        priority: "High"
-        description: "This ChangeSet creates the initial database schema, including user and roles tables."
       changes:
         - sqlFile:
             path: "scripts/schema.sql"
