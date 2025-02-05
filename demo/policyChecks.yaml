@@ -6,8 +6,6 @@ liquibase checks run \
 
 
   
-
-
 name: Liquibase Quality Checks
 
 on:

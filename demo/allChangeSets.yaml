@@ -5,13 +5,7 @@ databaseChangeLog:
       id: "phase1"
       author: "Mohith"
       comment: "Create the initial database schema structure"
-      labels: "schema-setup"
-      metadata:
-        ado-ticket: "#214333"
-        created-date: "2025-02-05"
-        reviewer: "satish"
-        priority: "High"
-        description: "This ChangeSet creates the initial database schema, including user and roles tables."
+      labels: "#213456 schema-setup"
       changes:
         - sqlFile:
             path: "scripts/schema.sql"
@@ -24,7 +18,7 @@ databaseChangeLog:
       id: "phase2"
       author: "Mohith"
       comment: "Insert initial data into the database tables"
-      labels: "initial-data"
+      labels: "#78899 initial-data"
       changes:
         - sqlFile:
             path: "scripts/data.sql"
@@ -37,7 +31,7 @@ databaseChangeLog:
       id: "phase3"
       author: "Mohith"
       comment: "Increase size of the 'name' attribute in the database"
-      labels: "attribute-size-update"
+      labels: "#78855 attribute-size-update"
       changes:
         - sqlFile:
             path: "scripts/index.sql"
@@ -49,7 +43,7 @@ databaseChangeLog:
   - changeSet:
       id: "phase4"
       author: "Mohith"
-      comment: "Insert data into the database tables"
+      comment: "#58999 Insert data into the database tables"
       labels: "initial-data"
       changes:
         - sqlFile:

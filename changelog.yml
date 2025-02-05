@@ -5,7 +5,7 @@ databaseChangeLog:
       id: "phase1"
       author: "Mohith"
       comment: "Create the initial database schema structure"
-      labels: "schema-setup"
+      labels: "#213456 schema-setup"
       changes:
         - sqlFile:
             path: "scripts/schema.sql"
@@ -18,37 +18,10 @@ databaseChangeLog:
       id: "phase2"
       author: "Mohith"
       comment: "Insert initial data into the database tables"
-      labels: "initial-data"
+      labels: "#78899 initial-data"
       changes:
         - sqlFile:
             path: "scripts/data.sql"
       rollback:
         - sqlFile:
             path: "scripts/data_rollback.sql"
-
-  # Third change set: increases the size of the 'name' attribute
-  - changeSet:
-      id: "phase3"
-      author: "Mohith"
-      comment: "Increase size of the 'name' attribute in the database"
-      labels: "attribute-size-update"
-      changes:
-        - sqlFile:
-            path: "scripts/index.sql"
-      rollback:
-        - sqlFile:
-            path: "scripts/index_rollback.sql"
-
-  # Fourth change set: populates the database with data
-  - changeSet:
-      id: "phase4"
-      author: "Mohith"
-      comment: "Insert data into the database tables"
-      labels: "initial-data"
-      changes:
-        - sqlFile:
-            path: "scripts/data_add.sql"
-      rollback:
-        - sqlFile:
-            path: "scripts/data_add_rollback.sql"
-            
