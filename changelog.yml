@@ -25,3 +25,29 @@ databaseChangeLog:
       rollback:
         - sqlFile:
             path: "scripts/data_rollback.sql"
+
+    # Third change set: increases the size of the 'name' attribute
+  - changeSet:
+      id: "phase3"
+      author: "Mohith"
+      comment: "Increase size of the 'name' attribute in the database"
+      labels: "#78855 attribute-size-update"
+      changes:
+        - sqlFile:
+            path: "scripts/index.sql"
+      rollback:
+        - sqlFile:
+            path: "scripts/index_rollback.sql"
+
+  # Fourth change set: populates the database with data
+  - changeSet:
+      id: "phase4"
+      author: "Mohith"
+      comment: "#58999 Insert data into the database tables"
+      labels: "initial-data"
+      changes:
+        - sqlFile:
+            path: "scripts/data_add.sql"
+      rollback:
+        - sqlFile:
+            path: "scripts/data_add_rollback.sql"
