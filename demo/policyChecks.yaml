@@ -1,0 +1,52 @@
+liquibase checks run \
+  --url="jdbc:mysql://your-database-url" \
+  --username="your-db-user" \
+  --password="your-db-password" \
+  --outputFile="liquibase-checks-report.txt"
+
+
+  
+
+
+name: Liquibase Quality Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  liquibase-quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Liquibase
+        run: |
+          curl -L https://github.com/liquibase/liquibase/releases/latest/download/liquibase.tar.gz | tar xz
+          chmod +x liquibase
+
+      - name: Run Liquibase Quality Checks
+        run: |
+          ./liquibase checks run \
+            --url="jdbc:mysql://$DB_HOST:$DB_PORT/$DB_NAME" \
+            --username="$DB_USER" \
+            --password="$DB_PASS" \
+            --outputFile="liquibase-checks-report.txt"
+
+      - name: Upload Liquibase Check Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: liquibase-checks-report
+          path: liquibase-checks-report.txt
+
+      - name: Fail if Liquibase Quality Checks Found Issues
+        run: |
+          if grep -q "FAILED" liquibase-checks-report.txt; then
+            echo "Liquibase Quality Checks failed! Please fix schema issues."
+            exit 1
+          fi

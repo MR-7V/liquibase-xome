@@ -1,0 +1,19 @@
+- changeSet:
+    id: "phase1"
+    author: "Mohith"
+    comment: "Initial database schema setup for User Management"
+    metadata:
+      ado-ticket: "#214333"
+      created-date: "2025-02-05"
+      reviewer: "satish"
+      priority: "High"
+      description: "This ChangeSet creates the initial database schema, including user and roles tables."
+    labels: "schema-setup,user-management"
+    context: "dev,qa,uat,prod"
+    failOnError: true
+    changes:
+      - sqlFile:
+          path: "scripts/schema.sql"
+    rollback:
+      - sqlFile:
+          path: "scripts/schema_rollback.sql"
